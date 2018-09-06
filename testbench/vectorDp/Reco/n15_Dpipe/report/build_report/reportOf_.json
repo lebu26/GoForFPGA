@@ -1,0 +1,82 @@
+Build Report: {
+	"partName": "xcvu9p-flgb2104-2-i",
+	"lutSummary": {
+		"used": 23720,
+		"detail": {
+			"lutLogic": {
+				"used": 20999,
+				"available": 1182240,
+				"description": "LUT as Logic",
+				"utilisation": 1.78
+			},
+			"lutMemory": {
+				"used": 2721,
+				"available": 591840,
+				"description": "LUT as Memory",
+				"utilisation": 0.46
+			}
+		},
+		"available": 1182240,
+		"description": "CLB LUTs",
+		"utilisation": 2.01
+	},
+	"moduleName": "reconfigure_io_sdaccel_builder_stub_0_1",
+	"regSummary": {
+		"used": 47719,
+		"detail": {
+			"regLatch": {
+				"used": 0,
+				"available": 2364480,
+				"description": "Register as Latch",
+				"utilisation": 0
+			},
+			"regFlipFlop": {
+				"used": 47719,
+				"available": 2364480,
+				"description": "Register as Flip Flop",
+				"utilisation": 2.02
+			}
+		},
+		"available": 2364480,
+		"description": "CLB Registers",
+		"utilisation": 2.02
+	},
+	"blockRamSummary": {
+		"used": 1,
+		"detail": {
+			"blockRamB18": {
+				"used": 0,
+				"available": 4320,
+				"description": "RAMB18",
+				"utilisation": 0
+			},
+			"blockRamB36": {
+				"used": 1,
+				"available": 2160,
+				"description": "RAMB36/FIFO",
+				"utilisation": 0.05
+			}
+		},
+		"available": 2160,
+		"description": "Block RAM Tile",
+		"utilisation": 0.05
+	},
+	"dspBlockSummary": {
+		"used": 813,
+		"available": 6840,
+		"description": "DSPs",
+		"utilisation": 11.89
+	},
+	"ultraRamSummary": {
+		"used": 0,
+		"available": 960,
+		"description": "URAM",
+		"utilisation": 0
+	},
+	"weightedAverage": {
+		"used": 194887,
+		"available": 9067200,
+		"description": "Weighted Average",
+		"utilisation": 2.15
+	}
+}

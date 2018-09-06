@@ -1,0 +1,10 @@
+package: .
+import:
+- package: github.com/ReconfigureIO/fixed
+  subpackages:
+  - host
+- package: github.com/ReconfigureIO/sdaccel
+  subpackages:
+  - axi/memory
+  - axi/protocol
+  - xcl
