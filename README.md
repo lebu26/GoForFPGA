@@ -15,7 +15,11 @@ To run the projects on Reco, you will need to configure the Reco environment in 
 For professors from imperial college, you can use `reco auth <API key>` to log on my account to check these projects, where API key is the key I emailed to you.
 
 For example, if you want to check the result of the data transformation:
+
+
 1, Use `reco project set fir_data_time` to navigate to the project. After this step, you might want to use `reco project ls` to check whether this project is set(This step is optional). If the project is set, you can check what I have done in this project by check logs. Or you can also make your own deployment accroding to the [reco document](http://docs.reconfigure.io/overview.html).
+
+
 2, For example, if you want to check the deployment result of the data tranformation benchmark. After the project is set, you can use `reco deploy ls` to check the deployment list. follow message will come out. The deployment command test_fir 10000000 will include the experiment result of 10 million data transformation result
 ```
              DEPLOYMENT ID                                BUILD ID                         COMMAND             STATUS          STARTED        DURATION
