@@ -54,8 +54,25 @@ xclProbe found 1 FPGA slots with XDMA driver running
 
 2018/08/05 12:12:45 *************************************************************************************
  ```
-4, Other API you might use to expore this project can be found on this [ReconfigureIO page](http://docs.reconfigure.io/tool_invocation.html). You might use this tool to explor the teak diagram, deployment log, or even deploy some project. 
+4, Other API you might use to expore this project can be found on this [ReconfigureIO page](http://docs.reconfigure.io/tool_invocation.html). 
 
+For example, you might use this tool to explore 
+
+* the teak diagram by 
+```
+reco graph ls
+reco graph open <grpah ID>
+```
+* the resource utilization report by
+```
+reco build ls
+reco build report <build ID>
+```
+* the build report that contains clock frquency message 
+```
+reco build ls
+reco build log <build ID>
+```
 This table includes all the directory names, corrsponding projects name and the description of the project. You can find corresponding  source code, build result, teak graph in corresponding folder. These project names can be used to navigate to the project use `reco prject set <project name>`. 
 
 <table><tr><th colspan="4">Directory name</th><th>Decirption</th><th>project name in my account</th></tr><tr><td rowspan="20">testbench</td><td rowspan="2">data tranformation</td><td>Reco</td><td></td><td>data tranformation&nbsp;&nbsp;&nbsp;on Reco platform</td><td>fir_data_time</td></tr><tr><td>SDAccel</td><td></td><td>data tranformation&nbsp;&nbsp;&nbsp;on SDAccel platform</td><td></td></tr><tr><td rowspan="7">VectorDp</td><td rowspan="6">Reco</td><td>n20-non-opti</td><td>vector product with 20 support vectors on Reco platform with no optimization applied</td><td>svm_n20sv</td></tr><tr><td>n1_Dpipe</td><td>vector product with 1 support vector on Reco platform with default-pipeline design pattern</td><td>svm_self_pipe_1</td></tr><tr><td>n15_Dpipe</td><td>vector product with 15 support vectors on Reco platform with default-pipeline design pattern</td><td>svm_2_another_pipe</td></tr><tr><td>n20_Dpipe</td><td>vector product with 20 support vectors on Reco platform with default-pipeline design pattern</td><td>svm_20sv_self_pipe</td></tr><tr><td>n20_Upipe</td><td>vector product with 20 support vector on Reco platform with user-defined-pipeline design pattern</td><td>svm_20_user_pipe</td></tr><tr><td>data time</td><td>data tranformation time for the vector product algorithm on Reco</td><td>svm_data</td></tr><tr><td>SDAccel</td><td>pipeline</td><td>vector product with 20 support vectors on SDAccel platform with default optimization applied</td><td></td></tr><tr><td rowspan="6">FIR</td><td rowspan="4">Reco</td><td>non-opti</td><td>FIR filter of order 10 on Reco with default optimization</td><td>fir_no_opti</td></tr><tr><td>n10_pipe</td><td>FIR filter of order 10 on Reco with user-defined design pattern optimization</td><td>FIR_n10_pipe</td></tr><tr><td>n20_pipe</td><td>FIR filter of order 20 on Reco with user-defined design pattern optimization</td><td>FIR_n20_pipe</td></tr><tr><td>n30_pipe</td><td>FIR filter of order 30 on Reco with user-defined design pattern optimization</td><td>FIR_n30_pipe</td></tr><tr><td rowspan="2">SDAccel</td><td>no opti</td><td>FIR filter of order 10 on SDAccel with default optimization</td><td></td></tr><tr><td>pipeline</td><td>FIR filter of order 10 on SDAccel with pipeline optimization</td><td></td></tr><tr><td rowspan="5">Julia Set</td><td rowspan="3">Reco</td><td>non-opti</td><td>julia set generator on Reco with default optimization</td><td>julia_32_no_opti</td></tr><tr><td>tp10</td><td>julia set generator on Reco with thread pool optimization with 10 threads</td><td>julia_32_pipe</td></tr><tr><td>tp20</td><td>julia set generator on Reco with thread pool optimization with 20 threads</td><td>julia_32_thread20</td></tr><tr><td rowspan="2">SDAccel</td><td>non-opti</td><td>julai set generator on SDAccel with default optimization</td><td></td></tr><tr><td>pipeline</td><td>julai set generator on SDAccel with pipeline optimization</td><td></td></tr><tr><td>tools</td><td>loopUnrollMaker</td><td></td><td></td><td>completely unroll the loop user provided with the loop body and iteration</td><td></td></tr><tr><td></td><td>fir_generator</td><td></td><td></td><td>generate functions for a&nbsp;&nbsp;pipelined FIR filter with reqired order, data type, and coefficients</td><td></td></tr><tr><td></td><td>TpMaker</td><td></td><td></td><td>generate functions for a thread pool with the number of thread and target function body.</td><td></td></tr></table>
