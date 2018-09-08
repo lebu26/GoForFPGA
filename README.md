@@ -6,7 +6,7 @@ This github Repo will includes all projects have done on Reco and SDAccel for ex
 
 The details of the optimization method can be found in the paper. 
 
-## How to run the Reco prject
+## How to run the Reco project
 
 Firstly, you will need to configure the Reco environment in your local device(A linux system is recommanded) following the [instruction](http://docs.reconfigure.io/overview.html) provided by Reco. Then, you can create new projects using the code in the corresponding project folder and do corrsponding deployment, simulation, and analysis. 
 
@@ -77,3 +77,23 @@ This table includes all the directory names, corrsponding projects name and the 
 
 <table><tr><th colspan="4">Directory name</th><th>Decirption</th><th>project name in my account</th></tr><tr><td rowspan="20">testbench</td><td rowspan="2">data tranformation</td><td>Reco</td><td></td><td>data tranformation&nbsp;&nbsp;&nbsp;on Reco platform</td><td>fir_data_time</td></tr><tr><td>SDAccel</td><td></td><td>data tranformation&nbsp;&nbsp;&nbsp;on SDAccel platform</td><td></td></tr><tr><td rowspan="7">VectorDp</td><td rowspan="6">Reco</td><td>n20-non-opti</td><td>vector product with 20 support vectors on Reco platform with no optimization applied</td><td>svm_n20sv</td></tr><tr><td>n1_Dpipe</td><td>vector product with 1 support vector on Reco platform with default-pipeline design pattern</td><td>svm_self_pipe_1</td></tr><tr><td>n15_Dpipe</td><td>vector product with 15 support vectors on Reco platform with default-pipeline design pattern</td><td>svm_2_another_pipe</td></tr><tr><td>n20_Dpipe</td><td>vector product with 20 support vectors on Reco platform with default-pipeline design pattern</td><td>svm_20sv_self_pipe</td></tr><tr><td>n20_Upipe</td><td>vector product with 20 support vector on Reco platform with user-defined-pipeline design pattern</td><td>svm_20_user_pipe</td></tr><tr><td>data time</td><td>data tranformation time for the vector product algorithm on Reco</td><td>svm_data</td></tr><tr><td>SDAccel</td><td>pipeline</td><td>vector product with 20 support vectors on SDAccel platform with default optimization applied</td><td></td></tr><tr><td rowspan="6">FIR</td><td rowspan="4">Reco</td><td>non-opti</td><td>FIR filter of order 10 on Reco with default optimization</td><td>fir_no_opti</td></tr><tr><td>n10_pipe</td><td>FIR filter of order 10 on Reco with user-defined design pattern optimization</td><td>FIR_n10_pipe</td></tr><tr><td>n20_pipe</td><td>FIR filter of order 20 on Reco with user-defined design pattern optimization</td><td>FIR_n20_pipe</td></tr><tr><td>n30_pipe</td><td>FIR filter of order 30 on Reco with user-defined design pattern optimization</td><td>FIR_n30_pipe</td></tr><tr><td rowspan="2">SDAccel</td><td>no opti</td><td>FIR filter of order 10 on SDAccel with default optimization</td><td></td></tr><tr><td>pipeline</td><td>FIR filter of order 10 on SDAccel with pipeline optimization</td><td></td></tr><tr><td rowspan="5">Julia Set</td><td rowspan="3">Reco</td><td>non-opti</td><td>julia set generator on Reco with default optimization</td><td>julia_32_no_opti</td></tr><tr><td>tp10</td><td>julia set generator on Reco with thread pool optimization with 10 threads</td><td>julia_32_pipe</td></tr><tr><td>tp20</td><td>julia set generator on Reco with thread pool optimization with 20 threads</td><td>julia_32_thread20</td></tr><tr><td rowspan="2">SDAccel</td><td>non-opti</td><td>julai set generator on SDAccel with default optimization</td><td></td></tr><tr><td>pipeline</td><td>julai set generator on SDAccel with pipeline optimization</td><td></td></tr><tr><td>tools</td><td>loopUnrollMaker</td><td></td><td></td><td>completely unroll the loop user provided with the loop body and iteration</td><td></td></tr><tr><td></td><td>fir_generator</td><td></td><td></td><td>generate functions for a&nbsp;&nbsp;pipelined FIR filter with reqired order, data type, and coefficients</td><td></td></tr><tr><td></td><td>TpMaker</td><td></td><td></td><td>generate functions for a thread pool with the number of thread and target function body.</td><td></td></tr></table>
 
+## How to run the SDAccel project
+Firstly You will need to follow [this project](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) to configure the develop environment for SDAccel.
+
+* Option 1: rebuild the project from the source code. 
+After the Centos system is settled and the SDx GUI system is open. Create a new sdx project with the `xilinx_aws-vu9p-f1-04261818_dynamic_5_0.xpfm` platform and select the vector add example. After the vector add example project is created, copy the source code from this repository to replace the code in the example. Then build the project to get the xclbin file for FPGA and .exe file for cpu. Afterward, build the AFI use the xclbin file.
+
+* Option2 : Build the AFI directly from the `xxx.xclbin` file. 
+After the SDAccel enviroment is settled, upload the corresponding `xclbin` file and the `.exe` file to a folder. Then use the same intruction in this [page](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) for building AFI and deployment.  
+
+Finally, after the AFI is built, deploy to the FPGA according to the instruction in [page](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) for deployment. Note that the "helloworld" command mentiond in the page should be replaced by the "xxx.exe" file.
+
+## How to use tools for Reco optimization
+The most significant contribution of this project are the design patterns proposed in the paper. These C++ tools are just used to duplicate the code in the case that mannually type the code is tedious.
+
+* The DPipeMaker is used to make the default pipeline structure of vector product testbench with the fixed number of iteration.
+* The loopUnrollMaker is used to completely unroll a loop with the fixed number of the iteration.
+* The fir_generator will generate the FIR filter with the user-defined pipeline structure.
+* The Tpmaker will generate a top level function for the thread poool pattern optimized program with the desired number of threads
+
+The way of using these tool is to compile the `xxx.h` file with `xxx.cpp` file with gcc or IDE like visual studio. The corresponding arguments in the main function in the `xxx.cpp` file can be replaced by your program body and desired parameters.
