@@ -84,7 +84,7 @@ Firstly You will need to follow [this project](https://github.com/Xilinx/SDAccel
 After the Centos system is settled and the SDx GUI system is open. Create a new sdx project with the `xilinx_aws-vu9p-f1-04261818_dynamic_5_0.xpfm` platform and select the vector add example. After the vector add example project is created, copy the source code from this repository to replace the code in the example. Then build the project to get the xclbin file for FPGA and .exe file for cpu. Afterward, build the AFI use the xclbin file.
 
 * Option2 : Build the AFI directly from the `xxx.xclbin` file. 
-After the SDAccel enviroment is settled, upload the corresponding `xclbin` file and the `.exe` file to a folder. Then use the same intruction in this [page](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) for building AFI and deployment.  
+After the SDAccel enviroment is settled, upload the corresponding `xclbin` file and the `.exe` file to a folder. Then use the same intruction in this [page](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) for building AFI and deployment. These binary file can be found in this [google drive link](https://drive.google.com/drive/folders/1qja1DuFsTNO5EkH2LUHj45qxQVMW4gh-?usp=sharing)
 
 Finally, after the AFI is built, deploy to the FPGA according to the instruction in [page](https://github.com/Xilinx/SDAccel_Examples/wiki/Create,-configure-and-test-an-AWS-F1-instance) for deployment. Note that the "helloworld" command mentiond in the page should be replaced by the "xxx.exe" file.
 
